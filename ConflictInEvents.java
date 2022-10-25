@@ -19,7 +19,7 @@ public class ConflictInEvents {
       return false;
     }
     public static void main(String[] args) {
-        String event1[] = new String []{"10:00","11:00"}, event2[] =new String[] {"14:00","15:00"};
+        String event1[] = new String []{"10:00","11:00"}, event2[] =new String[] {"14:00","15:00" };
         System.out.println(haveConflict(event1, event2));
     }
 }
