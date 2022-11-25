@@ -31,8 +31,8 @@ public class ExitFromEntrances{
             level++;
             for(int i=0;i<size;i++){
                 Pair temp=q.poll();
-                int row=p.row;
-                int col=p.col;
+                int row=temp.row;
+                int col=temp.col;
 
                 for(int j=0;j<4;j++){
                     int new_row=row+dr[j];
