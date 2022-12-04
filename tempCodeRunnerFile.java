@@ -1,2 +1,1 @@
-findsubsequences( s, "");
-        // Sy
+s
