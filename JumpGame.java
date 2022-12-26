@@ -1,16 +1,23 @@
 public class JumpGame {
 
-    static int canReach(int[] A, int N) {
-        int reachable=0;
-        for(int i=0;i<N;i++){
-            if(reachable<i){
-                return 0;
-            }
-            reachable=Math.max(reachable, i+A[i]);
-        }
-        return 1;
-    }
-    public static void main(String[] args) {
+    static public boolean canJump(int[] nums) {
+        int reach=0;
         
+        for(int i=0;i<nums.length;i++){
+            if(i>reach){
+                return false;
+                
+            }
+            if(i+nums[i]>reach){
+                reach=i+nums[i];
+            }
+            
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        int arr[]=new int[]{2,3,1,1,4};
+        System.out.println(canJump(arr));
     }
 }
