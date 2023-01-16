@@ -1,35 +1,33 @@
-import java.util.Arrays;
+
 
 public class Test {
 
-  public static int frogJump(int n, int heights[]) {
-    int dp[]=new int[heights.length];
-    Arrays.fill(dp, -1);
+  static public String categorizeBox(int length, int width, int height, int mass) {
+    String isBulk="";
+        if(length>=10000 || width>=10000|| height>=10000) {
+          isBulk= "Bulky";
+        }
 
-    dp[0]=heights[0];
+        long volume=(long)(length*width)*height;
+       
+        if(volume>=1000000000){
+          isBulk= "Bulky";
+        };
+        String isHeavy="";
+         if(mass>=100) isHeavy="Heavy";
+        
 
-    for(int i=1;i<n;i++){
-      int left=Math.abs(heights[i]-dp[i-1]);
-      int right=Integer.MAX_VALUE;
-      if(i<1) right=Math.abs(heights[i]-dp[i-2]);
+        if(isBulk.equals("Bulky") && isHeavy.equals("Heavy")) return "Both";
+        // if(!isBulk.equals("Bulky") && !isHeavy.equals("Heavy")) return "Neither";
+        if(isBulk.equals("Bulky") && !isHeavy.equals("Heavy")) return "Bulky";
+        if(!isBulk.equals("Bulky") && isHeavy.equals("Heavy")) return "Heavy";
 
-      dp[i]=Math.min(left, right);
-    
-    }
-    return dp[n-1];
+        if(mass>=100) return "Heavy";
+        
+        return "Neither";
   }
-  static int solution(int i,int heights[],int dp[]){
-    if(i==0) return 0;
-
-    if(dp[i]!=-1) return dp[i];
-
-    int left=solution(i-1, heights, dp)+Math.abs(heights[i]-heights[i-1]);
-    int right=0;
-    if(i>1) right=solution(i-2, heights, dp)+Math.abs(heights[i]-heights[i-2]);
-
-    return dp[i]=Math.min(left, right);
-  }
+  
   public static void main(String[] args) {
-    
+    System.out.println(categorizeBox(2909, 3968, 3272, 727));
 }
 } 
