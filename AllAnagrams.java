@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.event.AncestorEvent;
+
+public class AllAnagrams {
+    public List<Integer> findAnagrams(String s, String p) {
+
+        int[] map = new int[26];
+        List<Integer> result = new ArrayList<>();
+        
+        for(int i=0;i<p.length();i++){
+            map[p.charAt(i) - 'a']++;
+        }
+    
+        int windowStart = 0;
+        int windowEnd = 0;
+        while(windowEnd<s.length()){
+		
+            if(map[s.charAt(windowEnd) - 'a'] > 0){
+                map[s.charAt(windowEnd++) - 'a']--;
+
+                if(windowEnd-windowStart ==  p.length()){                    
+                    result.add(windowStart);
+                }
+            }
+            else if(windowStart == windowEnd){
+                windowStart ++;
+                windowEnd ++;
+            }
+            else{
+                map[s.charAt(windowStart++) - 'a']++;
+            }      
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        
+    }
+}
